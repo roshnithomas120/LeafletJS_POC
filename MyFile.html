@@ -22,9 +22,40 @@
        //  var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
        //  var layer = new L.TileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png');
        //  var layer = new L.TileLayer('http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/ {y}.png');
-         var layer = new L.TileLayer('http://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png');
+        var layer = new L.TileLayer('http://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png');
+    /*   var layer = new L.tileLayer('file:///Users/roshnithomas/Documents/Tutorial/LeafletJS_POC/mapimage.png?z={z}&x={x}&y={y}', {
+    minZoom: 7, maxZoom: 16,
+    attribution: 'My Tile Server'
+});*/// might need https://www.maptiler.com/maps/openstreetmap/ or equivalent to generate x, y,z images
          // Adding layer to the map
          map.addLayer(layer);
+
+var airplaneIcon = L.icon({
+    iconUrl: 'markers/icons8-airplane-48.png',
+    shadowUrl: 'markers/icons8-airplane-48.png',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+         // Options for the marker
+var markerOptions = {
+	icon: airplaneIcon,
+   title: "My Airplace",
+   clickable: true,
+   draggable: true
+};
+         // Creating a marker
+		var marker = new L.Marker([17.385044, 78.486671], markerOptions);
+ // Adding popup to the marker
+         marker.bindPopup('Airline on runway').openPopup();
+		    // Adding marker to the map
+
+
+         marker.addTo(map);
       </script>
    </body>
    
