@@ -31,11 +31,10 @@
          map.addLayer(layer);
 
 var airplaneIcon = L.icon({
-    iconUrl: 'markers/icons8-airplane-48.png',
-    shadowUrl: 'markers/icons8-airplane-48.png',
+    iconUrl: 'markers/icons8-airplane-16.png',
 
     iconSize:     [38, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
+   // shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -54,8 +53,84 @@ var markerOptions = {
          marker.bindPopup('Airline on runway').openPopup();
 		    // Adding marker to the map
 
+          // Creating latlng object
+         var latlngs = [
+            [17.385044, 78.486671],
+            [16.506174, 80.648015],
+            [17.000538, 81.804034],
+            [17.686816, 83.218482]
+         ];
+         // Creating a poly line
+         var polyline = L.polyline(latlngs, {color: 'red'});
+         
+         // Adding to poly line to map
+        // polyline.addTo(map);
 
-         marker.addTo(map);
+         var latlngs_tri = [
+            [17.385044, 78.486671],
+            [16.506174, 80.648015],
+            [17.686816, 83.218482]
+         ];
+         // Creating a polygon
+         var polygon = L.polygon(latlngs_tri, {color: 'blue'});
+         
+         // Adding to polygon to map
+        // polygon.addTo(map);
+
+         var latlngs_rect = [
+            [17.342761, 78.552432],
+            [16.396553, 80.727725]
+         ];
+         var rectOptions = {color: 'Red', weight: 1}   // Creating rectOptions
+        
+         // Creating a rectangle
+         var rectangle = L.rectangle(latlngs_rect, rectOptions);
+        // rectangle.addTo(map);   // Adding to rectangle to map
+         var circleCenter = [17.385044, 78.486671];     // Center of the circle
+         
+         // Circle options
+         var circleOptions = {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0
+         }
+         // Creating a circle
+         var circle = L.circle(circleCenter, 50000, circleOptions);
+         //circle.addTo(map);     // Adding circle to the map
+
+         // Creating latlng object
+         var latlang_multiploy = [
+            [[17.385044, 78.486671], [16.506174, 80.648015], [17.686816, 83.218482]],
+            [[13.082680, 80.270718], [12.971599, 77.594563],[15.828126, 78.037279]]
+         ];
+         
+         // Creating poly line options
+         var multiPolyLineOptions = {color:'black'};
+         
+         // Creating multi poly-lines
+         var multipolyline = L.multiPolyline(latlang_multiploy , multiPolyLineOptions);
+         
+         // Adding multi poly-line to map
+         multipolyline.addTo(map);
+        // marker.addTo(map);
+
+         // Creating markers
+         var hydMarker = new L.Marker([17.385044, 78.486671]);
+         var vskpMarker = new L.Marker([17.686816, 83.218482]);
+         var vjwdMarker = new L.Marker([16.506174, 80.648015]);
+         
+         // Creating latlng object
+         var latlngs = [
+            [17.385044, 78.486671],
+            [16.506174, 80.648015],
+            [17.686816, 83.218482]
+         ];
+         // Creating a polygon
+         var polygon = L.polygon(latlngs, {color: 'red'});
+         
+         // Creating layer group
+         var layerGroup = L.layerGroup([hydMarker, vskpMarker, vjwdMarker, polygon]);
+         layerGroup.addTo(map);    // Adding layer group to map
       </script>
    </body>
    
